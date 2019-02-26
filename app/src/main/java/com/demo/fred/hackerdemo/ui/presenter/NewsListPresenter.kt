@@ -9,13 +9,12 @@ import com.demo.fred.hackerdemo.ui.view.NewsDetailFragment
 import com.demo.fred.hackerdemo.ui.view.NewsWebViewFragment
 import com.demo.fred.hackerdemo.utils.Constants.Companion.KEY_NEWS
 import com.demo.fred.hackerdemo.utils.Constants.Companion.KEY_URL
-import com.demo.fred.hackerdemo.utils.Constants.Companion.URL_PREFIX
+import com.demo.fred.hackerdemo.utils.isLink
 import io.reactivex.Observable
-import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import org.jetbrains.annotations.TestOnly
 import javax.inject.Inject
 
 
@@ -28,7 +27,7 @@ class NewsListPresenter @Inject constructor(private val model: NewsListModel) : 
 
 
     private var disposable = CompositeDisposable()
-    private var adapter: NewsListAdapter = NewsListAdapter()
+    private val adapter: NewsListAdapter = NewsListAdapter()
     private var iView: NewsListContract.IView? = null
 
     override fun attachView(mView: NewsListContract.IView) {
@@ -48,16 +47,11 @@ class NewsListPresenter @Inject constructor(private val model: NewsListModel) : 
 
     override fun onSetUp() {
         adapter.onItemClick { newsResponse ->
-            if (checkLink(newsResponse))
-                onExternalLinkClicked(newsResponse)
-            else
-                onContentNewsClicked(newsResponse)
-
+            when (newsResponse.url?.isLink()) {
+                true -> onExternalLinkClicked(newsResponse)
+                false -> onContentNewsClicked(newsResponse)
+            }
         }
-    }
-
-    private fun checkLink(newsResponse: NewsResponse): Boolean {
-        return newsResponse.url.startsWith(URL_PREFIX)
     }
 
     private fun loadNews() {
@@ -71,31 +65,13 @@ class NewsListPresenter @Inject constructor(private val model: NewsListModel) : 
             hackerNewsObservable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeWith(object : Observer<NewsResponse>, Disposable {
-                    override fun isDisposed(): Boolean {
-                        return false
-                    }
-
-                    override fun dispose() {
-                        disposable.dispose()
-                    }
-
-                    override fun onComplete() {
-                        iView?.stopProgressBar()
-                    }
-
-                    override fun onSubscribe(d: Disposable) {
-
-                    }
-
-                    override fun onNext(t: NewsResponse) {
-                        adapter.addNews(t)
-                    }
-
-                    override fun onError(e: Throwable) {
-                        iView?.showMessage(e.message.orEmpty())
-                    }
-
+                .doOnComplete {
+                    iView?.stopProgressBar()
+                }
+                .subscribe({
+                    adapter.addNews(it)
+                }, {
+                    iView?.showMessage(it.message.orEmpty())
                 })
         )
     }
@@ -123,5 +99,8 @@ class NewsListPresenter @Inject constructor(private val model: NewsListModel) : 
         }
     }
 
+    @TestOnly
+    fun getAdapter() = adapter
 
 }
+

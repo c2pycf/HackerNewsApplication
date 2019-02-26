@@ -13,7 +13,7 @@ import dagger.android.ContributesAndroidInjector
  */
 @Suppress("unused")
 @Module
-abstract class AbstractInjectionModule{
+abstract class AbstractInjectionModule {
     @ContributesAndroidInjector
     abstract fun contributesHackerNewsActivity(): HackerNewsActivity
 

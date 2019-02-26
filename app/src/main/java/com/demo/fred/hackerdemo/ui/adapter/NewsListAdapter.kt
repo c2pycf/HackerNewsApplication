@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import com.demo.fred.hackerdemo.R
 import com.demo.fred.hackerdemo.model.NewsResponse
 import com.demo.fred.hackerdemo.utils.formatTime
+import com.demo.fred.hackerdemo.utils.isLink
 import kotlinx.android.synthetic.main.item_news.view.*
 
 /**
@@ -43,8 +44,11 @@ class NewsListAdapter : RecyclerView.Adapter<NewsListAdapter.NewsViewHolder>() {
             data: NewsResponse,
             itemClickBehavior: ((NewsResponse) -> Unit)?
         ) {
-
             view.tv_news_title.text = data.title
+            when (data.url?.isLink()) {
+                false -> view.tv_news_title.setTextColor(view.resources.getColor(R.color.title_normal, null))
+                true -> view.tv_news_title.setTextColor(view.resources.getColor(R.color.title_link, null))
+            }
             view.tv_news_author.text = view.resources.getString(R.string.tv_detail_author).plus(data.by)
             if (data.time != null) {
                 val timeFormat = formatTime(data.time)

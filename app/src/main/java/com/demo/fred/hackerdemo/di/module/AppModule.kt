@@ -14,13 +14,13 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideHackerNewsService():  HackerService{
+    fun provideHackerNewsService(): HackerService {
         return HackerService.create()
     }
 
     @Singleton
     @Provides
-    fun provideHackerNewsClient(hackerService: HackerService) : HackerClient {
+    fun provideHackerNewsClient(hackerService: HackerService): HackerClient {
         return HackerClient(hackerService)
     }
 

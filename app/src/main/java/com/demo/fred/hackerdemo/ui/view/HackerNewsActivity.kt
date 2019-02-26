@@ -17,14 +17,12 @@ class HackerNewsActivity : AppCompatActivity() {
         AndroidInjection.inject(this)
         setContentView(R.layout.activity_hacker_news)
         setSupportActionBar(toolbar)
-
-
     }
 
     override fun onStart() {
         super.onStart()
         supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_container, NewsListFragment())
+            .replace(R.id.fragment_container, NewsListFragment())
             .addToBackStack(null)
             .commit()
     }

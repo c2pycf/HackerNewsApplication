@@ -10,6 +10,7 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import org.jetbrains.annotations.TestOnly
 import java.util.*
 import javax.inject.Inject
 
@@ -22,7 +23,7 @@ class NewsDetailPresenter @Inject constructor(private val model: NewsDetailModel
     private var mView: NewsDetailContract.IView? = null
     private val disposable = CompositeDisposable()
     private lateinit var commentItems: List<Int>
-    private lateinit var adapter: NewsCommentsAdapter
+    private val adapter: NewsCommentsAdapter = NewsCommentsAdapter()
 
 
     override fun attachView(mView: NewsDetailContract.IView) {
@@ -44,7 +45,7 @@ class NewsDetailPresenter @Inject constructor(private val model: NewsDetailModel
     }
 
     override fun create() {
-        adapter = NewsCommentsAdapter()
+        //adapter = NewsCommentsAdapter()
         mView?.setAdapter(adapter)
     }
 
@@ -55,7 +56,7 @@ class NewsDetailPresenter @Inject constructor(private val model: NewsDetailModel
         return "0"
     }
 
-    private fun formatContent(content: String): String {
+    private fun formatContent(content: String?): String {
         return formatHTMLText(content)
     }
 
@@ -89,4 +90,8 @@ class NewsDetailPresenter @Inject constructor(private val model: NewsDetailModel
         )
     }
 
+    @TestOnly
+    fun getAdapter(): NewsCommentsAdapter {
+        return adapter
+    }
 }

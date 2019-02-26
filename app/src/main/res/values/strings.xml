@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HackerDemo</string>
+    <string name="app_name">TopHackerNews</string>
     <string name="content_title">Content:</string>
     <string name="comments_title">User Comments:</string>
     <string name="bt_show_comments_text">Show Comments</string>

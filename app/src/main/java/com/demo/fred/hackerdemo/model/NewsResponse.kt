@@ -33,6 +33,6 @@ data class NewsResponse(
     @SerializedName("type")
     @Expose
     val type: String?,
-    @SerializedName(value="url", alternate=["text"])
-    val url: String
+    @SerializedName(value = "url", alternate = ["text"])
+    val url: String?
 ) : Serializable
