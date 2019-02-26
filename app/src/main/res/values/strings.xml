@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">HackerDemo</string>
+    <string name="content_title">Content:</string>
+    <string name="comments_title">User Comments:</string>
+    <string name="bt_show_comments_text">Show Comments</string>
+    <string name="tv_detail_author">Author:\u0020</string>
+    <string name="tv_detail_score">Score:\u0020</string>
+    <string name="tv_detail_dec">Decedents:\u0020</string>
+    <string name="title_activity_hacker_news">HackerNewsActivity</string>
+    <string name="fab_add_comments_text">Comment</string>
+    <string name="fab_submit_story">Post Story</string>
+    <string name="fragment_news_list_title">Hacker News List</string>
+</resources>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_news_title_detail"
+                android:textSize="@dimen/news_title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/line1"
+                android:layout_margin="@dimen/horizontal_margin"
+                android:padding="@dimen/vertical_padding"/>
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/dockerGray"
+                android:id="@+id/line1"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:layout_marginBottom="@dimen/vertical_margin"
+                app:layout_constraintBottom_toTopOf="@id/tv_news_detail_score"
+                app:layout_constraintTop_toBottomOf="@id/tv_news_title_detail"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_news_detail_author"
+                android:text="@string/tv_detail_author"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginEnd="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:layout_marginBottom="@dimen/vertical_margin"
+                app:layout_constraintTop_toBottomOf="@id/line1"
+                app:layout_constraintBottom_toTopOf="@id/tv_news_detail_decedents"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_news_detail_score"
+                android:padding="@dimen/vertical_padding"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_news_detail_score"
+                android:text="@string/tv_detail_score"
+                android:layout_marginStart="@dimen/horizontal_margin"
+                android:layout_marginEnd="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:layout_marginBottom="@dimen/vertical_margin"
+                android:padding="@dimen/vertical_padding"
+                app:layout_constraintStart_toEndOf="@id/tv_news_detail_author"
+                app:layout_constraintBottom_toTopOf="@id/tv_news_detail_time"
+                app:layout_constraintTop_toBottomOf="@id/line1"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_news_detail_decedents"
+                android:text="@string/tv_detail_dec"
+                android:layout_marginEnd="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:layout_marginBottom="@dimen/vertical_margin"
+                android:padding="@dimen/vertical_padding"
+                app:layout_constraintTop_toBottomOf="@id/tv_news_detail_author"
+                app:layout_constraintBottom_toTopOf="@id/line2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tv_news_detail_time"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_news_detail_time"
+                android:layout_marginEnd="@dimen/horizontal_margin"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:layout_marginBottom="@dimen/vertical_margin"
+                android:padding="@dimen/vertical_padding"
+                app:layout_constraintTop_toBottomOf="@id/tv_news_detail_score"
+                app:layout_constraintBottom_toTopOf="@id/line2"
+                app:layout_constraintStart_toEndOf="@id/tv_news_detail_decedents"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/dockerGray"
+                android:id="@+id/line2"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:layout_marginBottom="@dimen/vertical_margin"
+                app:layout_constraintBottom_toTopOf="@id/tv_news_title_detail"
+                app:layout_constraintTop_toBottomOf="@id/tv_news_detail_time"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_content_title"
+                app:layout_constraintTop_toBottomOf="@id/line2"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/content_title"
+                android:padding="@dimen/vertical_padding"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_content"
+                android:layout_margin="@dimen/vertical_margin"
+                android:padding="@dimen/vertical_padding"
+                app:layout_constraintTop_toBottomOf="@id/tv_content_title"
+                app:layout_constraintStart_toStartOf="parent"
+        />
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/dockerGray"
+                android:id="@+id/line3"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:layout_marginBottom="@dimen/vertical_margin"
+                app:layout_constraintBottom_toTopOf="@id/tv_comment_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_content"/>
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_comment_title"
+                app:layout_constraintTop_toBottomOf="@id/line3"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/comments_title"
+                android:padding="@dimen/vertical_padding"
+                android:layout_marginTop="@dimen/vertical_margin"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bt_show_comments"
+                android:text="@string/bt_show_comments_text"
+                app:layout_constraintTop_toBottomOf="@id/tv_comment_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recycler_view_comments"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/bt_show_comments"
+                app:layout_constraintStart_toStartOf="parent"
+                android:visibility="gone">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
