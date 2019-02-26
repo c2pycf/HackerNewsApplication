@@ -10,7 +10,7 @@
         android:src="@drawable/ic_add_white_24dp"
         fab:fab_addButtonColorNormal="@color/colorPrimary"
         fab:fab_addButtonColorPressed="@color/colorPrimaryDark"
-        fab:fab_addButtonPlusIconColor="@color/half_black"
+        fab:fab_addButtonPlusIconColor="@color/colorAccent"
         fab:fab_addButtonSize="normal"
         fab:fab_labelStyle="@style/menu_labels_style"
         fab:fab_labelsPosition="left">
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/fab_create_project"
             android:src="@drawable/ic_comment_black_24dp"
-            fab:fab_colorNormal="@color/white"
+            fab:fab_colorNormal="@color/colorPrimary"
             fab:fab_title="@string/fab_add_comments_text"
             fab:fab_size="mini"
             fab:fab_colorPressed="@color/white_pressed"/>
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/fab_create_task"
             android:src="@drawable/ic_library_books_black_24dp"
-            fab:fab_colorNormal="@color/white"
+            fab:fab_colorNormal="@color/colorPrimary"
             fab:fab_title="@string/fab_submit_story"
             fab:fab_size="mini"
             fab:fab_colorPressed="@color/white_pressed"/>
