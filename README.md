@@ -22,5 +22,5 @@ This application uses a number of technologies to work properly:
 * [Kotlin] 
 * [Junit] - Unit test
 * [Esspreso] - UI test tool
-* [Markito] - Unit test tool
+* [Mockito] - Unit test tool
 
